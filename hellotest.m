@@ -8,5 +8,5 @@
 :- import_module string.
 
 main(!IO) :-
-    s1 = "ferker i hardly know her"
-    io.write_string(s1 ++ "/n", !IO).
+    S1 = "ferker i hardly know her"
+    io.write_string(S1 ++ "\n", !IO)

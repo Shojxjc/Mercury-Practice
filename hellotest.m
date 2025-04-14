@@ -24,7 +24,7 @@ main(!IO) :-
             Input = Lookforthis
             -> 
                 io.write_string("Omg I'm gonna ferk \n", !IO),
-                random.int(11, ProgNum),
+                random.random_int(11, ProgNum),
                 play_guessing_game(ProgNum, !IO)
             ;
                 io.write_string("Meanie \n", !IO),

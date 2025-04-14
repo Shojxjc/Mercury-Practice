@@ -14,8 +14,9 @@ main(!IO) :-
     io.read_line_as_string(User, !IO),
     (
         User = ok(Line),
+        Input = string.strip(Line),
         (
-        string.equals(string.strip(Line), Lookforthis)
+        Input = Lookforthis
         ->
             io.write_string("Omg im gonna ferk \n", !IO)
         ;
@@ -31,3 +32,4 @@ main(!IO) :-
 
     S1 = "ferker i hardly know her",
     io.write_string(S1 ++ "\n", !IO).
+

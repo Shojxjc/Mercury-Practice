@@ -10,7 +10,7 @@
 :- import_module int.
 
 main(!IO) :-
-    random.init(12345, State), % You can change this seed for different results
+    random.init_state(12345, State), % You can change this seed for different results
 
     loop(1, 5, !IO),
     io.write_string("Lets go Gambling!!!!!!! \n", !IO),
@@ -25,6 +25,8 @@ main(!IO) :-
         Input = Lookforthis
         ->
             io.write_string("Omg im gonna ferk \n", !IO)
+             random.int(State, 10, ProgNum, NewState), % Generate a random number
+            play_guessing_game(ProgNum, NewState, !IO).
         ;
             io.write_string("Meanie \n", !IO),
             io.set_exit_status(1, !IO)
@@ -37,9 +39,24 @@ main(!IO) :-
         User = error(_),
         io.write_string("oopsie \n", !IO),
         io.set_exit_status(1, !IO)
-    ),
-    io.write_string("\n Lets play guess the number \n Im thinking of number between 1 - 10", !IO),
-    random.init(State, 10, ProgNum, NewState),
+    ).
+    
+
+
+
+:- pred loop(int::in, int::in, io::di, io::uo) is det.
+
+loop(N, Max, !IO) :-
+    ( if N =< Max then
+        io.write_string("\n", !IO),
+        loop(N + 1, Max, !IO)
+    else
+        true
+    ).
+
+:- pred play_guessing_game(int::in, random.state::in, io::di, io::uo) is det.
+play_guessing_game(ProgNum, State, !IO) :-
+io.write_string("\n Lets play guess the number \n Im thinking of number between 1 - 10", !IO),
     io.read_line_as_string(UNum, !IO),
     (
         UNum = ok(Sinep),
@@ -62,17 +79,3 @@ main(!IO) :-
         io.write_string("oopsie \n", !IO),
         io.set_exit_status(1, !IO)
     ).
-    
-
-
-
-:- pred loop(int::in, int::in, io::di, io::uo) is det.
-
-loop(N, Max, !IO) :-
-    ( if N =< Max then
-        io.write_string("\n", !IO),
-        loop(N + 1, Max, !IO)
-    else
-        true
-    ).
-

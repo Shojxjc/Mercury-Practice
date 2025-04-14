@@ -11,7 +11,7 @@
 
 main(!IO) :-
     loop(1, 5, !IO),
-    io.write_string("Lets go Gambling!!!!!!! \n", !IO),
+    io.write_string("\e[36mLets go Gambling!!!!!!! \n", !IO),
     io.write_string("Call me a good boy first though \n", !IO),
     Lookforthis = "Good Boy",
     io.read_line_as_string(User, !IO),

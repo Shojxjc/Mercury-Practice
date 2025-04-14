@@ -6,8 +6,11 @@
 
 :- implementation.
 :- import_module string.
+:- import_module random.
+:- import_module int.
 
 main(!IO) :-
+    loop(1, 5, !IO),
     io.write_string("Lets go Gambling!!!!!!! \n", !IO),
     io.write_string("Call me a good boy first though \n", !IO),
     Lookforthis = "Good Boy",
@@ -20,16 +23,24 @@ main(!IO) :-
         ->
             io.write_string("Omg im gonna ferk \n", !IO)
         ;
-            io.write_string("Yous a bitch", !IO)
+            io.write_string("Yous a bitch \n", !IO)
         )
     ;
         User = eof,
         io.write_string("Say something please \n", !IO)
     ;
         User = error(_),
-        io.write_string("oopsie", !IO)
+        io.write_string("oopsie \n", !IO)
     ),
 
-    S1 = "ferker i hardly know her",
+    S1 = "ferker i hardly know her \n",
     io.write_string(S1 ++ "\n", !IO).
+
+
+loop(N, Max, !IO) :-
+    ( if N =< Max then
+        io.write_string("\n", !IO),
+    else
+        true
+    ).
 

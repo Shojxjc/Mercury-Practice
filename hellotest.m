@@ -14,6 +14,8 @@ main(!IO) :-
     io.write_string("Lets go Gambling!!!!!!! \n", !IO),
     io.write_string("Call me a good boy first though \n", !IO),
     io.write_string("\n", !IO),
+    R0 = sfc16.init,
+    sfc16.uniform_int_in_range(1, 10, ProgNum, R0, R1),
 
     Lookforthis = "Good Boy",
     io.read_line_as_string(User, !IO),
@@ -24,7 +26,6 @@ main(!IO) :-
             Input = Lookforthis
             -> 
                 io.write_string("Omg I'm gonna ferk \n", !IO),
-                ProgNum = random.random_int(11),
                 play_guessing_game(ProgNum, !IO)
             ;
                 io.write_string("Meanie \n", !IO),

@@ -10,8 +10,6 @@
 :- import_module int.
 
 main(!IO) :-
-    random.init_state(12345, State), % You can change this seed for different results
-
     loop(1, 5, !IO),
     io.write_string("Lets go Gambling!!!!!!! \n", !IO),
     io.write_string("Call me a good boy first though \n", !IO),
@@ -26,7 +24,7 @@ main(!IO) :-
             Input = Lookforthis
             -> 
                 io.write_string("Omg I'm gonna ferk \n", !IO),
-                random.int(State, 10, ProgNum, NewState), % Generate a random number
+                random.int(11, ProgNum),
                 play_guessing_game(ProgNum, NewState, !IO)
             ;
                 io.write_string("Meanie \n", !IO),

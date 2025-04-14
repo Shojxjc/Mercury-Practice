@@ -6,7 +6,7 @@
 
 :- implementation.
 :- import_module string.
-:- import_module random.
+:- import_module random, random.implicit.
 :- import_module int.
 
 main(!IO) :-
@@ -24,7 +24,7 @@ main(!IO) :-
             Input = Lookforthis
             -> 
                 io.write_string("Omg I'm gonna ferk \n", !IO),
-                random.random_int(11, ProgNum),
+                ProgNum = random.random_int(11),
                 play_guessing_game(ProgNum, !IO)
             ;
                 io.write_string("Meanie \n", !IO),
@@ -51,7 +51,7 @@ loop(N, Max, !IO) :-
 
 :- pred play_guessing_game(int::in, io::di, io::uo) is det.
 play_guessing_game(ProgNum, !IO) :-
-    io.write_string("\nLets play guess the number \nI'm thinking of a number between 1 - 10", !IO),
+    io.write_string("\nLets play guess the number \nI'm thinking of a number between 0 - 10", !IO),
     io.read_line_as_string(UNum, !IO),
     (
         UNum = ok(Sinep),

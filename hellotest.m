@@ -45,6 +45,7 @@ main(!IO) :-
         UNum = ok(Sinep),
         Vinny = string.strip(Sinep),
         string.to_int(Vinny, GAM),
+        (
         GAM = ProgNum
         ->
             io.write_string("Holy shit you got it write\n", !IO)
@@ -60,7 +61,7 @@ main(!IO) :-
         User = error(_),
         io.write_string("oopsie \n", !IO)
         io.set_exit_status(1, !IO)
-    ),
+    ).
     
 
 

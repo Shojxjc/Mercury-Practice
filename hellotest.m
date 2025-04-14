@@ -25,7 +25,7 @@ main(!IO) :-
             -> 
                 io.write_string("Omg I'm gonna ferk \n", !IO),
                 random.int(11, ProgNum),
-                play_guessing_game(ProgNum, NewState, !IO)
+                play_guessing_game(ProgNum, !IO)
             ;
                 io.write_string("Meanie \n", !IO),
                 io.set_exit_status(1, !IO)
@@ -49,8 +49,8 @@ loop(N, Max, !IO) :-
         true
     ).
 
-:- pred play_guessing_game(int::in, int::in, io::di, io::uo) is det.
-play_guessing_game(ProgNum, State, !IO) :-
+:- pred play_guessing_game(int::in, io::di, io::uo) is det.
+play_guessing_game(ProgNum, !IO) :-
     io.write_string("\nLets play guess the number \nI'm thinking of a number between 1 - 10", !IO),
     io.read_line_as_string(UNum, !IO),
     (

@@ -49,7 +49,7 @@ loop(N, Max, !IO) :-
         true
     ).
 
-:- pred play_guessing_game(int::in, random.state::in, io::di, io::uo) is det.
+:- pred play_guessing_game(int::in, int::in, io::di, io::uo) is det.
 play_guessing_game(ProgNum, State, !IO) :-
     io.write_string("\nLets play guess the number \nI'm thinking of a number between 1 - 10", !IO),
     io.read_line_as_string(UNum, !IO),

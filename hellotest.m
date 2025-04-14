@@ -14,11 +14,13 @@ main(!IO) :-
     io.read_line_as_string(User, !IO),
     (
         User = ok(Line),
+        (
         string.equals(User, Lookforthis)
         ->
             io.write_string("Omg im gonna ferk \n")
         ;
             io.write_string("Yous a bitch")
+        )
     ;
         User = eof,
         io.write_string("Say something please \n")

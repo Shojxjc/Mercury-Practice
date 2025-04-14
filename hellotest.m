@@ -39,7 +39,7 @@ main(!IO) :-
         io.set_exit_status(1, !IO)
     ),
     io.write_string("\n Lets play guess the number \n Im thinking of number between 1 - 10", !IO),
-    random.int(State, 10, ProgNum, NewState),
+    random.init(State, 10, ProgNum, NewState),
     io.read_line_as_string(UNum, !IO),
     (
         UNum = ok(Sinep),

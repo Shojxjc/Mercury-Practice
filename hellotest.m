@@ -15,8 +15,8 @@ main(!IO) :-
     io.write_string("Call me a good boy first though \n", !IO),
     io.write_string("\n", !IO),
     R0 = sfc16.init,
-    sfc16.uniform_int_in_range(1, 10, ProgNum, R0, R1),
-
+    sfc16.uniform_int_in_range(1, 10, ProgNum, R1),
+    
     Lookforthis = "Good Boy",
     io.read_line_as_string(User, !IO),
     (
@@ -26,7 +26,7 @@ main(!IO) :-
             Input = Lookforthis
             -> 
                 io.write_string("Omg I'm gonna ferk \n", !IO),
-                play_guessing_game(ProgNum, !IO)
+                play_guessing_game(ProgNum, R1, !IO)
             ;
                 io.write_string("Meanie \n", !IO),
                 io.set_exit_status(1, !IO)
@@ -50,20 +50,26 @@ loop(N, Max, !IO) :-
         true
     ).
 
-:- pred play_guessing_game(int::in, io::di, io::uo) is det.
-play_guessing_game(ProgNum, !IO) :-
+:- pred play_guessing_game(int::in, random.state::in, io::di, io::uo) is det.
+play_guessing_game(ProgNum, R0, !IO) :-
     io.write_string("\nLets play guess the number \nI'm thinking of a number between 1 - 10", !IO),
     io.read_line_as_string(UNum, !IO),
     (
         UNum = ok(Sinep),
         Vinny = string.strip(Sinep),
-        string.to_int(Vinny, GAM),
         (
-            GAM = ProgNum
-            -> io.write_string("Holy shit you got it right\n", !IO)
-            ;
-                io.write_string("Lmao, incorrect. Try again! \n", !IO),
-                io.set_exit_status(1, !IO)
+            string.to_int(Vinny, GAM) = ok(GAM),
+            (
+                GAM = ProgNum
+                -> io.write_string("Holy shit you got it right\n", !IO)
+                ;
+                    io.write_string("Lmao, incorrect. Try again! \n", !IO),
+                    play_guessing_game(ProgNum, R0, !IO)
+            )
+        ;
+            string.to_int(Vinny, _) = error,
+            io.write_string("Invalid input. Please enter a number between 1 and 10.\n", !IO),
+            play_guessing_game(ProgNum, R0, !IO)
         )
     ;
         UNum = eof,

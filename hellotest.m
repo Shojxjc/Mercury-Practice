@@ -36,7 +36,7 @@ main(!IO) :-
     S1 = "ferker i hardly know her \n",
     io.write_string(S1 ++ "\n", !IO).
 
-:- pred loop(int::in, int::in, random.supply::in, random.supply::out, io::di, io::uo) is det.
+:- pred loop(int::in, int::in, io::di, io::uo) is det.
 
 loop(N, Max, !IO) :-
     ( if N =< Max then

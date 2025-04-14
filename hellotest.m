@@ -10,9 +10,12 @@
 :- import_module int.
 
 main(!IO) :-
+    random.init_state(12345, State), % You can change this seed for different results
+
     loop(1, 5, !IO),
-    io.write_string("\e[36mLets go Gambling!!!!!!! \n", !IO),
+    io.write_string("Lets go Gambling!!!!!!! \n", !IO),
     io.write_string("Call me a good boy first though \n", !IO),
+    io.write_string("\n", !IO),
     Lookforthis = "Good Boy",
     io.read_line_as_string(User, !IO),
     (
@@ -23,18 +26,44 @@ main(!IO) :-
         ->
             io.write_string("Omg im gonna ferk \n", !IO)
         ;
-            io.write_string("Yous a bitch \n", !IO)
+            io.write_string("Meanie \n", !IO)
+            io.set_exit_status(1, !IO)
         )
     ;
         User = eof,
-        io.write_string("Say something please \n", !IO)
+        io.write_string("What are you ignoring me \n", !IO)
+        io.set_exit_status(1, !IO)
     ;
         User = error(_),
         io.write_string("oopsie \n", !IO)
+        io.set_exit_status(1, !IO)
     ),
+    io.write_string("\n Lets play guess the number \n Im thinking of number between 1 - 10", !IO),
+    random.int(State, 10, ProgNum, NewState),
+    io.read_line_as_string(UNum, !IO),
+    (
+        UNum = ok(Sinep),
+        Vinny = string.strip(Sinep),
+        string.to_int(Vinny, GAM),
+        GAM = ProgNum
+        ->
+            io.write_string("Holy shit you got it write\n", !IO)
+        ;
+            io.write_string("Lmao Type shit \n", !IO)
+            io.set_exit_status(1, !IO)
+        )
+    ;
+        User = eof,
+        io.write_string("What are you ignoring me \n", !IO)
+        io.set_exit_status(1, !IO)
+    ;
+        User = error(_),
+        io.write_string("oopsie \n", !IO)
+        io.set_exit_status(1, !IO)
+    ),
+    
 
-    S1 = "ferker i hardly know her \n",
-    io.write_string(S1 ++ "\n", !IO).
+
 
 :- pred loop(int::in, int::in, io::di, io::uo) is det.
 

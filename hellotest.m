@@ -14,8 +14,7 @@ main(!IO) :-
     io.write_string("Lets go Gambling!!!!!!! \n", !IO),
     io.write_string("Call me a good boy first though \n", !IO),
     io.write_string("\n", !IO),
-    R0 = sfc16.init,
-    sfc16.uniform_int_in_range(1, 10, ProgNum, R1),
+    ProgNum = random.int(1, 10),
     
     Lookforthis = "Good Boy",
     io.read_line_as_string(User, !IO),
@@ -50,7 +49,7 @@ loop(N, Max, !IO) :-
         true
     ).
 
-:- pred play_guessing_game(int::in, random.state::in, io::di, io::uo) is det.
+:- pred play_guessing_game(int::in, io::di, io::uo) is det.
 play_guessing_game(ProgNum, R0, !IO) :-
     io.write_string("\nLets play guess the number \nI'm thinking of a number between 1 - 10", !IO),
     io.read_line_as_string(UNum, !IO),

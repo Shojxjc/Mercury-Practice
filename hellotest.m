@@ -15,18 +15,18 @@ main(!IO) :-
     (
         User = ok(Line),
         (
-        string.equals(User, Lookforthis)
+        string.equals(string.strip(Line), Lookforthis)
         ->
-            io.write_string("Omg im gonna ferk \n")
+            io.write_string("Omg im gonna ferk \n", !IO)
         ;
-            io.write_string("Yous a bitch")
+            io.write_string("Yous a bitch", !IO)
         )
     ;
         User = eof,
-        io.write_string("Say something please \n")
+        io.write_string("Say something please \n", !IO)
     ;
         User = error(_),
-        io.write_string("oopsie")
+        io.write_string("oopsie", !IO)
     ),
 
     S1 = "ferker i hardly know her",

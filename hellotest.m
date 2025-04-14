@@ -24,19 +24,19 @@ main(!IO) :-
         (
         Input = Lookforthis
         ->
-            io.write_string("Omg im gonna ferk \n", !IO)
+            io.write_string("Omg im gonna ferk \n", !IO),
         ;
-            io.write_string("Meanie \n", !IO)
-            io.set_exit_status(1, !IO),
+            io.write_string("Meanie \n", !IO),
+            io.set_exit_status(1, !IO)
         )
     ;
         User = eof,
-        io.write_string("What are you ignoring me \n", !IO)
-        io.set_exit_status(1, !IO),
+        io.write_string("What are you ignoring me \n", !IO),
+        io.set_exit_status(1, !IO)
     ;
         User = error(_),
-        io.write_string("oopsie \n", !IO)
-        io.set_exit_status(1, !IO),
+        io.write_string("oopsie \n", !IO),
+        io.set_exit_status(1, !IO)
     ),
     io.write_string("\n Lets play guess the number \n Im thinking of number between 1 - 10", !IO),
     random.int(State, 10, ProgNum, NewState),
@@ -50,17 +50,17 @@ main(!IO) :-
         ->
             io.write_string("Holy shit you got it write\n", !IO)
         ;
-            io.write_string("Lmao Type shit \n", !IO)
-            io.set_exit_status(1, !IO),
+            io.write_string("Lmao Type shit \n", !IO),
+            io.set_exit_status(1, !IO)
         )
     ;
         UNum = eof,
-        io.write_string("What are you ignoring me \n", !IO)
-        io.set_exit_status(1, !IO),
+        io.write_string("What are you ignoring me \n", !IO),
+        io.set_exit_status(1, !IO)
     ;
         UNum = error(_),
-        io.write_string("oopsie \n", !IO)
-        io.set_exit_status(1, !IO),
+        io.write_string("oopsie \n", !IO),
+        io.set_exit_status(1, !IO)
     ).
     
 

@@ -40,7 +40,8 @@ main(!IO) :-
 loop(N, Max, !IO) :-
     ( if N =< Max then
         io.write_string("\n", !IO),
-    else
+        loop(N + 1, Max, !IO)
+    ;
         true
     ).
 

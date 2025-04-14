@@ -24,7 +24,7 @@ main(!IO) :-
         (
         Input = Lookforthis
         ->
-            io.write_string("Omg im gonna ferk \n", !IO),
+            io.write_string("Omg im gonna ferk \n", !IO)
         ;
             io.write_string("Meanie \n", !IO),
             io.set_exit_status(1, !IO)

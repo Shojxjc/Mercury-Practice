@@ -10,7 +10,7 @@
 :- import_module int.
 
 main(!IO) :-
-    random.init_state(12345, State), % You can change this seed for different results
+    random.init(12345, State), % You can change this seed for different results
 
     loop(1, 5, !IO),
     io.write_string("Lets go Gambling!!!!!!! \n", !IO),

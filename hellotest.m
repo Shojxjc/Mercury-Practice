@@ -56,13 +56,17 @@ play_guessing_game(ProgNum, !IO) :-
     (
         UNum = ok(Sinep),
         Vinny = string.strip(Sinep),
-        string.to_int(Vinny, GAM),
-        (
-            GAM = ProgNum
-            -> io.write_string("Holy shit you got it right\n", !IO)
-            ;
-                io.write_string("Lmao, incorrect. Try again! \n", !IO),
-                io.set_exit_status(1, !IO)
+        (if string.to_int(Vinny, GAM) then
+            (
+                GAM = ProgNum
+                -> io.write_string("Holy shit you got it right\n", !IO)
+                ;
+                    io.write_string("Lmao, incorrect. Try again! \n", !IO),
+                    io.set_exit_status(1, !IO)
+            )
+        else
+            io.write_string("That's not even a number 💀\n", !IO),
+            io.set_exit_status(1, !IO)
         )
     ;
         UNum = eof,

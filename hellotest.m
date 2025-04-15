@@ -62,7 +62,7 @@ play_guessing_game(ProgNum, !IO) :-
             -> io.write_string("Holy shit you got it right\n", !IO)
             ;
                 io.write_string("Lmao, incorrect. Try again! \n", !IO),
-                io.set_exit_status(1, !IO)s
+                io.set_exit_status(1, !IO)
         )
     ;
         UNum = eof,

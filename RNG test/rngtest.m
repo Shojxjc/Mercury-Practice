@@ -10,14 +10,11 @@
 :- import_module random.
 :- import_module random.sfc32.
 
-:- pred uniform_int_in_range(int::in, int::in, int::out, R::in, R::out)
-    is det <= random(R).
-
 main(!IO) :-
     SeedInt = 12345,
     sfc32.make_params_from_int(SeedInt, Params),
     % Use sfc32 random number generator and initialize it with the seed
-    sfc32.init(Paramss, R0),
+    sfc32.init(Params, R0),
 
     % Generate a random number in the range 1 to 10
     uniform_int_in_range(1, 10, Number, R0, _),

@@ -5,18 +5,12 @@
 :- pred main(io::di, io::uo) is det.
 
 :- implementation.
-:- import_module int, random, time.
-:- include_module sfc16.
+:- import_module int, random, time, string.
 :- include_module sfc32.
-:- include_module sfc64.
-:- include_module system_rng.
-:- import_module array.
-:- import_module io.
-:- import_module list.
 
 :- pred uniform_int_in_range(int::in, int::in, int::out, R::in, R::out)
     is det <= random(R).
-main(!IO) :-
+
 % Get the current time and use it as a seed
     time.current_time(Time),
     Seed = time.to_int(Time),

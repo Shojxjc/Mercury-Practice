@@ -12,10 +12,10 @@
 
 main(!IO) :-
     SeedInt = 12345,
-    sfc32.init(SeedInt, R0),
+    sfc32.init(int.to_uint(SeedInt), R0),
 
     % Generate a random number in the range 1 to 10
-    uniform_int_in_range(1, 10, Number, R0, _),
+    sfc32.uniform_int_in_range(1, 10, Number, R0, _),
 
     % Print the random number
     io.format("Your random number is: %d\n", [i(Number)], !IO).

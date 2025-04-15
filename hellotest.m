@@ -51,7 +51,7 @@ loop(N, Max, !IO) :-
 
 :- pred play_guessing_game(int::in, io::di, io::uo) is det.
 play_guessing_game(ProgNum, !IO) :-
-    io.write_string("\nLets play guess the number \nI'm thinking of a number between 1 - 10", !IO),
+    io.write_string("\nLets play guess the number \nI'm thinking of a number between 1 - 10 \n", !IO),
     io.read_line_as_string(UNum, !IO),
     (
         UNum = ok(Sinep),
@@ -61,11 +61,11 @@ play_guessing_game(ProgNum, !IO) :-
                 GAM = ProgNum
                 -> io.write_string("Holy shit you got it right\n", !IO)
                 ;
-                    io.write_string("Lmao, incorrect. Try again! \n", !IO),
+                    io.write_string("Wrong number dipshit \n", !IO),
                     io.set_exit_status(1, !IO)
             )
         else
-            io.write_string("That's not even a number 💀\n", !IO),
+            io.write_string("That's not even a number \n", !IO),
             io.set_exit_status(1, !IO)
         )
     ;

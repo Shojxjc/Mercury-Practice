@@ -7,16 +7,14 @@
 :- implementation.
 :- import_module int, time, string.
 :- import_module list.
-:- import_module random.
+:- import_module random.sfc32.
 
 main(!IO) :-
-    R = sfc16.init,
-    make_io_random(R, M1, !IO),
-    roll(M1, !IO),
-    roll(M1, !IO),
+    SeedInt = 12345,
+    R0 = sfc32.init(int.to_uint(SeedInt)),
 
-    :- pred roll(M::in, io::di, io::uo) is det <= urandom(M, io).
+    % Generate a random number in the range 1 to 10
+    sfc32.uniform_int_in_range(1, 10, Number, R0, _),
 
-    roll(M, !IO) :-
-    uniform_int_in_range(M, 1, 6, N, !IO),
-    io.format("You rolled a %d\n", [i(N)], !IO).
+    % Print the random number
+    io.format("Your random number is: %d\n", [i(Number)], !IO).

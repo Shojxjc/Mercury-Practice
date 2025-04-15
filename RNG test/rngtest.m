@@ -10,9 +10,9 @@
 
 :- pred uniform_int_in_range(int::in, int::in, int::out, R::in, R::out)
     is det <= random(R).
-    
-    Seed = 12345,
 
+main(!IO) :-
+    Seed = 12345,
     % Use sfc32 random number generator and initialize it with the seed
     sfc32.init(Seed, R0),
 

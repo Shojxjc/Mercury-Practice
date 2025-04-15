@@ -14,9 +14,10 @@
     is det <= random(R).
 
 main(!IO) :-
-    Seed = 12345,
+    SeedInt = 12345,
+    sfc32.make_params_from_int(SeedInt, Params),
     % Use sfc32 random number generator and initialize it with the seed
-    sfc32.init(Seed, R0),
+    sfc32.init(Paramss, R0),
 
     % Generate a random number in the range 1 to 10
     uniform_int_in_range(1, 10, Number, R0, _),

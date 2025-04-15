@@ -16,8 +16,16 @@
 
 :- pred uniform_int_in_range(int::in, int::in, int::out, R::in, R::out)
     is det <= random(R).
-
 main(!IO) :-
-    random.init(Seed, R0),
-    uniform_int_in_range(1, 10, Ksi, R0, R1),
-    io.format("Your random number is: %d\n", [i(Ksi)], !IO).
+% Get the current time and use it as a seed
+    time.current_time(Time),
+    Seed = time.to_int(Time),
+
+    % Use sfc32 random number generator and initialize it with the seed
+    sfc32.init(Seed, R0),
+
+    % Generate a random number in the range 1 to 10
+    uniform_int_in_range(1, 10, Number, R0, _),
+
+    % Print the random number
+    io.format("Your random number is: %d\n", [i(Number)], !IO).

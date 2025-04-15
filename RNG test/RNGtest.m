@@ -1,4 +1,4 @@
-:- module randgen.
+:- module RNGtest.
 :- interface.
 :- import_module io.
 
@@ -6,20 +6,20 @@
 
 :- implementation.
 :- import_module int, random, time.
+:- include_module sfc16.
+:- include_module sfc32.
+:- include_module sfc64.
+:- include_module system_rng.
+:- import_module array.
+:- import_module io.
+:- import_module list.
+
+:- pred uniform_int_in_range(int::in, int::in, int::out, R::in, R::out)
+    is det <= random(R).
 
 main(!IO) :-
-    % Get the current time
-    time.current_time(Time, !IO),
+    random.init(Seed, !R),
+    uniform_int_in_range(1, 10, Ksi, !R),
+    io.format("Your random number is: %d\n", [i(Ksi)], !IO).
 
-    % Use the current time to seed the random number generator
-    TimeSeed = time.to_int(Time),
-    random.init(TimeSeed, RandState0),
 
-    % Generate a random number
-    random.random(RandState0, Rand, RandState1),
-
-    % Reduce it to a range (1 to 10)
-    Num = (Rand mod 10) + 1,
-
-    % Output the random number
-    io.format("Your random number is: %d\n", [i(Num)], !IO).

@@ -8,11 +8,7 @@
 :- import_module int, time, string.
 :- import_module list.
 :- import_module random.
-:- include_module sfc16.
-:- include_module sfc32.
-:- include_module sfc64.
-:- include_module system_rng.
-
+:- import_module random.sfc32.
 
 :- pred uniform_int_in_range(int::in, int::in, int::out, R::in, R::out)
     is det <= random(R).

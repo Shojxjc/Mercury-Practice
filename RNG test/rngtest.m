@@ -18,6 +18,6 @@
     is det <= random(R).
 
 main(!IO) :-
-    random.init(Seed, !R),
-    uniform_int_in_range(1, 10, Ksi, !R),
+    random.init(Seed, R0),
+    uniform_int_in_range(1, 10, Ksi, R0, R1),
     io.format("Your random number is: %d\n", [i(Ksi)], !IO).

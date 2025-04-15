@@ -1,4 +1,4 @@
-:- module RNGtest.
+:- module rngtest.
 :- interface.
 :- import_module io.
 

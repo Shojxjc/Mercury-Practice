@@ -10,7 +10,6 @@
 :- import_module random.
 
 main(!IO) :-
-    Using a ground generator.
     R = sfc16.init,
     make_io_random(R, M1, !IO),
     roll(M1, !IO),

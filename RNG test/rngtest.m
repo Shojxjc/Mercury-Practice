@@ -5,16 +5,16 @@
 :- pred main(io::di, io::uo) is det.
 
 :- implementation.
-:- import_module int, time, string.
-:- import_module list.
-:- import_module random.sfc32.
+:- import_module int, random, string.
 
 main(!IO) :-
-    SeedInt = 12345,
-    R0 = sfc32.init(int.to_uint(SeedInt)),
+    % Seed the random number generator using a fixed seed (or use time for variability)
+    random.init(12345, RNG0),
 
-    % Generate a random number in the range 1 to 10
-    sfc32.uniform_int_in_range(1, 10, Number, R0, _),
+    % Generate a random float between 0.0 and 1.0
+    random.random(RFloat, RNG0, RNG1),
 
-    % Print the random number
+    % Scale it to the desired integer range (e.g., 1 to 10)
+    Number = 1 + int.truncate(RFloat * 10.0),
+
     io.format("Your random number is: %d\n", [i(Number)], !IO).

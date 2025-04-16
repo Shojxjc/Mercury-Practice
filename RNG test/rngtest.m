@@ -5,7 +5,7 @@
 :- pred main(io::di, io::uo) is det.
 
 :- implementation.
-:- import_module int, random, string.
+:- import_module random, float, string.
 
 main(!IO) :-
     % Seed the random number generator using a fixed seed (or use time for variability)
@@ -15,6 +15,6 @@ main(!IO) :-
     random.random(RFloat, RNG0, RNG1),
 
     % Scale it to the desired integer range (e.g., 1 to 10)
-    Number = 1 + int.truncate(RFloat * 10.0),
+    Number = 1 + int.truncate(float.to_int(RFloat * 10.0)),
 
     io.format("Your random number is: %d\n", [i(Number)], !IO).

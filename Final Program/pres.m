@@ -48,7 +48,7 @@ main(!IO) :-
    io.read_line_as_string(User, !IO),
    (
       User = ok(Line),
-      Input = string.strip(Line),
+      Input = string.to_lower(string.strip(Line)),
       Lookforthis = "Good boy",
       Semiok = "Good Program",
       ( if Input = Lookforthis then

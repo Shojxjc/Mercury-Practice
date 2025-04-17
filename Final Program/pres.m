@@ -53,7 +53,7 @@ main(!IO) :-
       Semiok = "Good Program",
       (
          Input = Lookforthis
-         io.write_string("Omg I'm gonna ferk \n", !IO),
+         io.write_string("Omg I'm gonna ferk \n", !IO)
       ;
          io.write_string("Meanie \n", !IO),
          io.set_exit_status(1, !IO)

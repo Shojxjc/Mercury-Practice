@@ -43,7 +43,7 @@ main(!IO) :-
       UNum = error(_),
          io.write_string("You must love kanye \n", !IO),
          io.set_exit_status(1, !IO)
-   )
+   ),
    io.write_string("I Caught the fish now call me a Good Boy !!\n", !IO),
    io.read_line_as_string(User, !IO),
    (

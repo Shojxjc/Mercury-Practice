@@ -56,7 +56,7 @@ main(!IO) :-
          else if Input = Semiok then
             io.write_string("Good Enough :)\n", !IO)
          else
-            io.write_string("Lame\n", !IO),
+            io.write_string("Lame\n", !IO)
       )
    ;
       User = eof,

@@ -50,7 +50,7 @@ main(!IO) :-
       User = ok(Line),
       Input = string.to_lower(string.strip(Line)),
       Lookforthis = "good boy",
-      Semiok = "good Program",
+      Semiok = "good program",
       ( if Input = Lookforthis then
             io.write_string("Omg I'm gonna ferk 💦\n", !IO)
          else if Input = Semiok then

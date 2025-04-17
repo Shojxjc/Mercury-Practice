@@ -51,21 +51,18 @@ main(!IO) :-
       Input = string.strip(Line),
       Lookforthis = "Good boy",
       Semiok = "Good Program",
-      (
-         Input = Lookforthis
-         io.write_string("Omg I'm gonna ferk \n", !IO)
-      ;
-         io.write_string("Meanie \n", !IO),
-         io.set_exit_status(1, !IO)
+      ( if Input = Lookforthis then
+            io.write_string("Omg I'm gonna ferk\n", !IO)
+         else
+            io.write_string("Meanie\n", !IO),
+            io.set_exit_status(1, !IO)
       )
    ;
       User = eof,
-      io.write_string("What are you ignoring me \n", !IO),
-      io.set_exit_status(1, !IO)
+      io.write_string("What are you ignoring me \n", !IO)
    ;
       User = error(_),
-      io.write_string("oopsie \n", !IO),
-      io.set_exit_status(1, !IO)
+      io.write_string("oopsie \n", !IO)
    ).
 
 

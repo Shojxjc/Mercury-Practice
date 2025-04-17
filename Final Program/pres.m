@@ -49,8 +49,8 @@ main(!IO) :-
    (
       User = ok(Line),
       Input = string.strip(Line),
-      Lookforthis = "Good boy"
-      Semiok = "Good Program"
+      Lookforthis = "Good boy",
+      Semiok = "Good Program",
       (
          Input = Lookforthis
          -> 

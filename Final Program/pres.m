@@ -52,10 +52,11 @@ main(!IO) :-
       Lookforthis = "Good boy",
       Semiok = "Good Program",
       ( if Input = Lookforthis then
-            io.write_string("Omg I'm gonna ferk\n", !IO)
+            io.write_string("Omg I'm gonna ferk 💦\n", !IO)
+         else if Input = Semiok then
+            io.write_string("Good Enough :)\n", !IO)
          else
-            io.write_string("Meanie\n", !IO),
-            io.set_exit_status(1, !IO)
+            io.write_string("Lame\n", !IO),
       )
    ;
       User = eof,

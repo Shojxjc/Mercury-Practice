@@ -44,7 +44,7 @@ main(!IO) :-
          io.write_string("You must love kanye \n", !IO),
          io.set_exit_status(1, !IO)
    ),
-   io.write_string("I Caught the fish now call me a Good Boy !!\n", !IO),
+   io.write_string("I Caught the fish now call me a Good Program !!\n", !IO),
    io.read_line_as_string(User, !IO),
    (
       User = ok(Line),
@@ -52,18 +52,18 @@ main(!IO) :-
       Lookforthis = "good boy",
       Semiok = "good program",
       ( if Input = Lookforthis then
-            io.write_string("A little werid but thank you \n", !IO)
+            io.write_string("A little werid but thank you : ) \n", !IO)
          else if Input = Semiok then
-            io.write_string("Thank you \n", !IO)
+            io.write_string("Thank you 😊\n", !IO)
          else
-            io.write_string("Lame\n", !IO)
+            io.write_string("Lame👎\n", !IO)
       )
    ;
       User = eof,
       io.write_string("What are you ignoring me \n", !IO)
    ;
       User = error(_),
-      io.write_string("oopsie \n", !IO)
+      io.write_string("I love Kanye \n", !IO)
    ).
 
 
